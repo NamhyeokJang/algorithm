@@ -1,0 +1,18 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+let input = [];
+
+rl
+  .on('line', function (line) {
+    input.push(line)
+  })
+  .on('close', function () {
+    const rests = input.map(x => +x % 42)
+    console.log(new Array(...new Set(rests)).length)
+    process.exit();
+  });
